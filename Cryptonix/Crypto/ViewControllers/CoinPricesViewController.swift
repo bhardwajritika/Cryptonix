@@ -49,7 +49,6 @@ class CoinPricesViewController: UIViewController {
 
 extension CoinPricesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(coins.count)
         return coins.count
     }
     
@@ -62,6 +61,7 @@ extension CoinPricesViewController: UITableViewDataSource {
 
 extension CoinPricesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let coin = coins[indexPath.row]
         let detailVC = CoinDetailViewController(coins: coin)
         show(detailVC, sender: self)

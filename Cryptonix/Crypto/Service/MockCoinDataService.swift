@@ -28,7 +28,6 @@ struct APICall {
         guard let url = URL(string: baseURL + apiKey) else {
             throw URLError(.badURL)
         }
-        print(url)
         
         let (data, response) = try await URLSession
             .shared
@@ -38,7 +37,7 @@ struct APICall {
               (200...299).contains(httpResponse.statusCode) else {
             throw URLError(.badServerResponse)
         }
-        
+     
         return try JSONDecoder().decode([Coin].self, from: data)
     }
 }
